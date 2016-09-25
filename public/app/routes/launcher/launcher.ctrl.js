@@ -10,12 +10,12 @@ export class Controller {
     
     constructor() {
         di.init(arguments);
+        
         this.projects = di.projectService.items;
     }
     
     init() {
         di.$timeout(() => {
-            console.log($('.dimmable'));
             $('.dimmable').dimmer({
                 on: 'hover',
                 duration: {
@@ -24,6 +24,37 @@ export class Controller {
                 }
             });
         });
+        this.reset();
+    }
+    
+    browse() {
+        $('input[type="file"]').click();
+    }
+    
+    browseSelected() {
+        this.form.location = this.form.file.webkitRelativePath;
+    }
+    
+    add() {
+        di.projectService.add({
+            name: this.form.name,
+            clone: this.form.clone,
+            location: this.form.location,
+            repo: this.form.repo
+        });
+        this.init();
+    }
+    
+    launch(project) {
+        console.log('launch it', project);
+    }
+    
+    reset() {
+        this.form = {}
+    }
+    
+    remove(index) {
+        di.projectService.remove(index);
     }
     
 }

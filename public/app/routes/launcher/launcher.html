@@ -2,7 +2,7 @@
 <div class="route-launcher" ng-init="ctrl.init()">
     <div class="ui grid" ng-repeat="project in ctrl.projects">
         <div class="row ui">
-            <div class="twelve wide column blurring dimmable">
+            <div class="fourteen wide column blurring dimmable">
                 <div class="ui items no-margin">
                     <div class="item">
                         <div class="content">
@@ -13,7 +13,11 @@
                                 <span>{{project.location}}</span>
                             </div>
                             <div class="extra">
-                                <div class="ui label"><i class="github alternate icon"></i> crstffr/something</div>
+                                <div class="ui horizontal label" ng-if="project.repo">
+                                    <i class="github alternate icon"></i> 
+                                    {{project.repo}}
+                                </div>
+                                <div class="ui horizontal green label">Running</div>
                             </div>
                         </div>
                     </div>
@@ -21,16 +25,16 @@
                 <div class="ui inverted dimmer">
                     <div class="content">
                         <div class="center">
-                            <button class="huge ui blue basic button">Launch {{project.name}}</button>
+                            <button class="huge ui blue button" ng-click="ctrl.launch(project)">Launch {{project.name}}</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="four wide column dimmable">
+            <div class="two wide column dimmable">
                 <div class="magic aligned">
                     <div class="content">
                         <div class="center">
-                            <button class="ui icon button">
+                            <button class="ui icon basic button">
                                 <i class="grey trash outline icon"></i>
                             </button>
                         </div>
@@ -39,7 +43,7 @@
                 <div class="ui inverted dimmer">
                     <div class="content">
                         <div class="center">
-                            <button class="red ui icon button">
+                            <button class="red ui icon button" ng-click="ctrl.remove($index)">
                                 <i class="white trash outline icon"></i>
                             </button>
                         </div>
@@ -48,4 +52,76 @@
             </div>
         </div>
     </div>
+
+    <div class="ui hidden section divider"></div>
+
+    <form name="ctrl.validation">
+        <div class="ui centered grid form">
+            <div class="twelve wide column">
+                <div class="field">
+                    <label>Project Name
+                        <input type="text"
+                                required 
+                                name="name" 
+                                ng-model="ctrl.form.name">
+                    </label>
+                </div>
+    
+                <div class="field">
+                    <label>Folder Location
+                        <div class="ui input">
+                            <input type="text" 
+                                    required
+                                    name="location"
+                                    ng-focus="ctrl.browse()"
+                                    ng-model="ctrl.form.location">
+                                   
+                            <input type="file" 
+                                    required
+                                    name="file"
+                                    webkitdirectory 
+                                    ng-model="ctrl.form.file" 
+                                    ng-change="ctrl.browseSelected()" 
+                                    style="display:none;"/>
+                        </div>
+                    </label>
+                </div>
+    
+                <div class="fields">
+                    <div class="two wide field">
+                        <label>Clone
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox" 
+                                        name="clone"
+                                        ng-model="ctrl.form.clone">
+                                <label></label>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="fourteen wide field">
+                        <label>Repo
+                            <input type="text" 
+                                    name="repo"
+                                    ng-model="ctrl.form.repo"
+                                    ng-required="ctrl.form.clone"
+                                    ng-disabled="!ctrl.form.clone"
+                                    placeholder="crstffr/workspace">
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="field">
+                    <button type="button"
+                        ng-click="ctrl.add()"
+                        ng-disabled="ctrl.validation.$invalid"
+                        class="ui fluid big green button">
+                        Add Project Workspace
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+
 </div>

@@ -12,6 +12,7 @@ System.config({
     "angular-ui-router": "npm:angular-ui-router@0.3.1",
     "css": "github:systemjs/plugin-css@0.1.29",
     "jquery": "npm:jquery@2.2.4",
+    "ng-file-input": "github:viniciusmelquiades/ng-file-input@1.0.2",
     "ngstorage": "npm:ngstorage@0.3.11",
     "text": "github:systemjs/plugin-text@0.0.9",
     "typescript": "npm:typescript@1.8.10",

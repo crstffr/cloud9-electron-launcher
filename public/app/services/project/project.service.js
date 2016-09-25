@@ -19,7 +19,7 @@ export class ProjectService {
     }
     
     add(data) {
-        _items.push(data);
+        _items.unshift(data);
     }
     
     remove(i) {
