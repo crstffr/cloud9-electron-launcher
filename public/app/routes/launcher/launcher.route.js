@@ -1,5 +1,6 @@
 import angular from 'angular';
 
+import './launcher.min.css!';
 import Template from './launcher.html!text';
 import {Controller} from './launcher.ctrl';
 import {ProjectServiceModule} from 'app/services/project/project.module';

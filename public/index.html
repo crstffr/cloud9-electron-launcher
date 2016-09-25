@@ -11,6 +11,7 @@
     <script src="./bundle.js"></script>
     <script>
       System.import('vendor/semantic');
+      System.import('style/site');
       System.import('app/app.module').then(function(app){
         app.ng.bootstrap(document, [app.name]);
       });

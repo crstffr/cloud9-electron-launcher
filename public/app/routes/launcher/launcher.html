@@ -1,27 +1,50 @@
 <h1>Launcher</h1>
-
-<div class="ui grid vertically divided" ng-repeat="project in ctrl.projects">
-    <div class="row">
-        <div class="fourteen wide column">
-            <div class="ui items">
-                <div class="item">
+<div class="route-launcher" ng-init="ctrl.init()">
+    <div class="ui grid" ng-repeat="project in ctrl.projects">
+        <div class="row ui">
+            <div class="twelve wide column blurring dimmable">
+                <div class="ui items no-margin">
+                    <div class="item">
+                        <div class="content">
+                            <a class="ui blue header">
+                                {{project.name}}
+                            </a>
+                            <div class="meta">
+                                <span>{{project.location}}</span>
+                            </div>
+                            <div class="extra">
+                                <div class="ui label"><i class="github alternate icon"></i> crstffr/something</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui inverted dimmer">
                     <div class="content">
-                        <div class="header">
-                            <a href="/#/">{{project.name}}</a>
-                        </div>
-                        <div class="meta">
-                            <span>{{project.location}}</span>
-                        </div>
-                        <div class="extra">
-                            <div class="ui label"><i class="github alternate icon"></i> crstffr/something</div>
+                        <div class="center">
+                            <button class="huge ui blue basic button">Launch {{project.name}}</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="middle aligned two wide column">
-            <div class="center aligned">
-                <i class="big minus square outline icon"></i>
+            <div class="four wide column dimmable">
+                <div class="magic aligned">
+                    <div class="content">
+                        <div class="center">
+                            <button class="ui icon button">
+                                <i class="grey trash outline icon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui inverted dimmer">
+                    <div class="content">
+                        <div class="center">
+                            <button class="red ui icon button">
+                                <i class="white trash outline icon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

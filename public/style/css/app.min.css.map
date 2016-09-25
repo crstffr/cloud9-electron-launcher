@@ -1,1 +1,0 @@
-{"version":3,"sources":["app.scss","_vars.scss"],"names":[],"mappings":"AAEA,KACI,WCFW","file":"app.min.css","sourcesContent":["@import \"vars\";\n\nbody {\n    background: $color-dark-0;\n}\n\n","\n$color-dark-0: #222;\n$color-dark-1: #303130;"],"sourceRoot":"/source/"}
