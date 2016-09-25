@@ -1,24 +1,26 @@
+import angular from 'angular';
+import 'angular-ui-router';
+
 import {DiHelper} from 'app/utils/dihelper';
-import LauncherTemplate from './routes/launcher/launcher.html!text';
-import {LauncherController} from './routes/launcher/launcher.ctrl';
+import {LauncherRoute} from 'app/routes/launcher/launcher.route';
+
+let routes = [
+    'ui.router',
+    LauncherRoute
+];
+
+export let AppRoutes = angular
+    .module('app.routes', routes)
+    .config(AppRouteConfig)
+    .name;
 
 let di = new DiHelper([
-    '$stateProvider',
     '$urlRouterProvider'
 ]);
 
-export function AppRoutes() {
-    
+function AppRouteConfig() {
     di.init(arguments);
-    
-    di.$stateProvider
-        .state('launcher', {
-            url: '/',
-            template: LauncherTemplate,
-            controller: LauncherController
-        });
-    
     di.$urlRouterProvider.otherwise('/');
 }
 
-AppRoutes.$inject = di.$inject;
+AppRouteConfig.$inject = di.$inject;

@@ -1,1 +1,28 @@
 <h1>Launcher</h1>
+
+<div class="ui grid vertically divided" ng-repeat="project in ctrl.projects">
+    <div class="row">
+        <div class="fourteen wide column">
+            <div class="ui items">
+                <div class="item">
+                    <div class="content">
+                        <div class="header">
+                            <a href="/#/">{{project.name}}</a>
+                        </div>
+                        <div class="meta">
+                            <span>{{project.location}}</span>
+                        </div>
+                        <div class="extra">
+                            <div class="ui label"><i class="github alternate icon"></i> crstffr/something</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="middle aligned two wide column">
+            <div class="center aligned">
+                <i class="big minus square outline icon"></i>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,17 +1,14 @@
 import angular from 'angular';
-import 'angular-ui-router';
-
 import {AppRoutes} from './app.routes';
 import {AppController} from './app.controller';
 
 let AppDeps = [
-    'ui.router'
+    AppRoutes
 ];
 
 let app = angular
     .module('App', AppDeps)
     .controller('AppController', AppController)
-    .config(AppRoutes)
     .config(AppConfig)
     .run(AppRun);
 
