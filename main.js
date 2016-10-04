@@ -1,25 +1,31 @@
-const electron = require('electron')
-// Module to control application life.
-const app = electron.app
-// Module to create native browser window.
-const BrowserWindow = electron.BrowserWindow
+const electron = require('electron');
+const static = require('node-static');
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
+const app = electron.app;
+const BrowserWindow = electron.BrowserWindow;
+
+let mainWindow;
+
+let fileServer = new static.Server('./public');
+
+require('http').createServer(function (request, response) {
+    request.addListener('end', function () {
+        fileServer.serve(request, response);
+    }).resume();
+}).listen(8080);
 
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 400,
-    height: 600
+    width: 800,
+    height: 600,
     webPreferences: {
       nodeIntegration: false
     }
   });
 
   // and load the index.html of the app.
-  mainWindow.loadURL(`file://${__dirname}/public/index.html`)
+  mainWindow.loadURL('http://localhost:8080');
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()

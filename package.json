@@ -59,5 +59,8 @@
     "devDependencies": {
       "typescript": "npm:typescript@1.6.2"
     }
+  },
+  "dependencies": {
+    "node-static": "0.7.9"
   }
 }
